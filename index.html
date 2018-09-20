@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"/>
+    <meta name="theme-color" content="#448AFF">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#448AFF">
+    <meta name="apple-mobile-web-app-title" content="What should I be doing right now">
+
+    <title>What should I be doing right now</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="index.css" type="text/css"/>
+  </head>
+  <body>
+    <div id="app">
+      <div v-if="debug">
+          {{ debug }}
+      </div>
+      <textarea v-model="theInstructions" placeholder="add multiple lines"></textarea>
+      <button v-on:click="theFunction()">[DEBUG] theFunction</button>
+    </div>
+
+    <noscript>Sorry, your browser does not support JavaScript!</noscript>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pouchdb/6.4.3/pouchdb.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.min.js"></script>
+    <script src="vuepouch.js"></script>
+    <script src="index.js"></script>
+	  <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function() {
+          navigator.serviceWorker.register("worker.js").then(function(registration) {
+            console.log("ServiceWorker registration successful with scope: ", registration.scope);
+          }, function(err) {
+            console.log("ServiceWorker registration failed: ", err);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
