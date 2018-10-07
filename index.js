@@ -13,7 +13,7 @@ const router = new VueRouter({
 })
 /**/
 // this is the Vue.js app
-const myVue = new Vue({
+const rightNow = new Vue({
     el: '#app',
     //router,
     watch:{
@@ -26,7 +26,29 @@ const myVue = new Vue({
     data: {
       debug: false,
       path: window.location.pathname,
-      theInstructions: "myVue.debug = true; alert('1 '+ myVue.debug + ' 2');"
+      tasks: {
+        sleeping: false,
+        doingRehabilitationExercises: false,
+        eating: false,
+        working: false,
+        cleaning: false,
+        workingOut: false,
+        programming: false,
+        doingCalisthenicsExercises: false,
+        hiking: false,
+        climbing: false,
+        dancing: false
+      },
+      task: "resting",
+      theInstructions:
+`
+    if(rightNow.iHaveFinished("sleeping")) {
+      rightNow.iShouldBe("doingRehabilitationExercises");
+    }
+    else {
+      rightNow.iShouldBe("sleeping");
+    }
+`
     },
     //-------------------------------------------------------------------------
     // pouchdb
@@ -49,6 +71,12 @@ const myVue = new Vue({
       theFunction(){
         return new Function(this.theInstructions)();
       },
+      iHaveFinished(task){
+        return this.tasks[task];
+      },
+      iShouldBe(task){
+        this.task = task;
+      }
     },
     beforeCreate(){
       //var found = false; // #1 , vuepouch -> #2
