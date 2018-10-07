@@ -25,9 +25,9 @@
       <div>
         <textarea v-model="theInstructions" placeholder="add multiple lines"></textarea>
       </div>
-      <div>
-        <input type="checkbox" id="sleeping" v-model="tasks.sleeping">
-        <label for="sleeping">Sleeping</label>
+      <div v-for="(value, key, index) in tasks" :key="index">
+        <input type="checkbox" :id="key" v-model="tasks[key]">
+        <label :for="key">{{ index }} {{ key }}</label>
       </div>
       <div>
         <button v-on:click="theFunction()">What should I be doing right now?</button>

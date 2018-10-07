@@ -42,12 +42,12 @@ const rightNow = new Vue({
       task: "resting",
       theInstructions:
 `
-    if(rightNow.iHaveFinished("sleeping")) {
-      rightNow.iShouldBe("doingRehabilitationExercises");
-    }
-    else {
-      rightNow.iShouldBe("sleeping");
-    }
+if(rightNow.iHaveFinished("sleeping")) {
+  rightNow.iShouldBe("doingRehabilitationExercises");
+}
+else {
+  rightNow.iShouldBe("sleeping");
+}
 `
     },
     //-------------------------------------------------------------------------

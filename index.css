@@ -5,6 +5,7 @@ body {
 textarea {
     width: 100%;
     padding-bottom: 50%;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 /*
