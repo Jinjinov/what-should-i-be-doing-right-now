@@ -12,6 +12,15 @@ const router = new VueRouter({
   ]
 })
 /**/
+
+/*
+- most conditions on time elapsed
+- facts: there are dirty dishes, the bed is not made
+- replace space with underscore while typing
+- https://stackoverflow.com/questions/43700573/internationalization-in-vue-js
+- https://github.com/leonardomso/33-js-concepts
+/**/
+
 // this is the Vue.js app
 const rightNow = new Vue({
     el: '#app',
@@ -43,9 +52,20 @@ const rightNow = new Vue({
       theInstructions:
 `
 if(rightNow.iHaveFinished("sleeping")) {
-  rightNow.iShouldBe("doingRehabilitationExercises");
-}
-else {
+  if(rightNow.iHaveFinished("doingRehabilitationExercises")) {
+    if(rightNow.iHaveFinished("eating")) {
+      if(rightNow.iHaveFinished("working")) {
+        rightNow.iShouldBe("cleaning");
+      } else {
+        rightNow.iShouldBe("working");
+      }
+    } else {
+      rightNow.iShouldBe("eating");
+    }
+  } else {
+    rightNow.iShouldBe("doingRehabilitationExercises");
+  }
+} else {
   rightNow.iShouldBe("sleeping");
 }
 `
