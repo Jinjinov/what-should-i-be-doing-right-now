@@ -14,6 +14,13 @@ const router = new VueRouter({
 /**/
 
 /*
+- list of true / false variables
+- list of time / date last completed variables
+- list of day of week / time span variables
+
+- (sleep, work, hobby) scheduled time: time in day / day in week ((/ day in month / day in year))
+- (appointment) fixed date: "future" or (task) "past + repeat interval"
+
 - most conditions on time elapsed
 - facts: there are dirty dishes, the bed is not made
 - replace space with underscore while typing
